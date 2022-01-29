@@ -1,192 +1,74 @@
-# atom-clock
-[![Travis!](https://img.shields.io/travis/b3by/atom-clock.svg?style=flat-square)](https://travis-ci.org/b3by/atom-clock)
-[![AppVeyor!](https://img.shields.io/appveyor/ci/b3by/atom-clock.svg?style=flat-square)](https://ci.appveyor.com/project/b3by/atom-clock)
-[![Deps!](https://img.shields.io/david/b3by/atom-clock.svg?style=flat-square)](https://david-dm.org/b3by/atom-clock)
-[![Installs!](https://img.shields.io/apm/dm/atom-clock.svg?style=flat-square)](https://atom.io/packages/atom-clock)
-[![Version!](https://img.shields.io/apm/v/atom-clock.svg?style=flat-square)](https://atom.io/packages/atom-clock)
-[![License](https://img.shields.io/apm/l/atom-clock.svg?style=flat-square)](https://github.com/b3by/atom-clock/blob/master/LICENSE.md)
+<p align="center">
+  <img src="https://i.imgur.com/LtUGnF3.png" width=500 />
+</p>
 
-[![GitHub stars](https://img.shields.io/github/stars/b3by/atom-clock.svg?style=social&label=Star)](https://github.com/b3by/atom-clock)
-[![GitHub forks](https://img.shields.io/github/forks/b3by/atom-clock.svg?style=social&label=Fork)](https://github.com/b3by/atom-clock)
+<div align="center">
+  <a href="https://github.com/sundowndev/phoneinfoga/actions">
+    <img src="https://github.com/sundowndev/phoneinfoga/workflows/Build/badge.svg" alt="build status" />
+  </a>
+  <a href="https://goreportcard.com/report/github.com/sundowndev/phoneinfoga">
+    <img src="https://goreportcard.com/badge/github.com/sundowndev/phoneinfoga" alt="go report" />
+  </a>
+  <a href="https://codeclimate.com/github/sundowndev/phoneinfoga/maintainability">
+    <img src="https://api.codeclimate.com/v1/badges/3259feb1c68df1cd4f71/maintainability" />
+  </a>
+  <a href='https://coveralls.io/github/sundowndev/phoneinfoga'>
+    <img src='https://coveralls.io/repos/github/sundowndev/phoneinfoga/badge.svg' alt='Coverage Status' />
+  </a>
+  <a href="https://github.com/sundowndev/phoneinfoga/releases">
+    <img src="https://img.shields.io/github/release/SundownDEV/phoneinfoga.svg" alt="Latest version" />
+  </a>
+</div>
 
-Display a customizable clock in the status bar.
+<h4 align="center">Advanced information gathering & OSINT framework for phone numbers</h4>
 
-### Installation
-The clock can be installed through Atom. Alternatively, you can use `apm`:
+<p align="center">
+  <a href="https://sundowndev.github.io/phoneinfoga/">Documentation</a> •
+  <a href="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/sundowndev/phoneinfoga/master/api/docs/swagger.yaml">API documentation</a> •
+  <a href="https://demo.phoneinfoga.crvx.fr/">Demo instance</a> •
+  <a href="https://medium.com/@SundownDEV/phone-number-scanning-osint-recon-tool-6ad8f0cac27b">Related blog post</a>
+</p>
 
-`apm install atom-clock`
+![](./docs/images/screenshot.png)
 
-### Features
-* Customizable time format and locale: any format and locale supported by
-[`moment.js`](http://momentjs.com/) is supported by `atom-clock` as well!
-* i18n: specify any locale to get the date in your language.
-* Easy access to time: right-click on the tile in the status bar to copy the
-time to your clipboard.
-* UTC time: show the UTC time instead of the local time.
-* Multi-platform package: the clock works with Linux, Windows and macOS.
+## About
 
-### Settings
+PhoneInfoga is one of the most advanced tools to scan international phone numbers. It allows you to first gather standard information such as country, area, carrier and line type on any international phone number, then search for footprints on search engines to try to find the VoIP provider or identify the owner.
 
-##### Time format
-It specifies the format to use when displaying the time. The package uses
-`moment.js` to format the time, so please refer to the related
-[`moment.js` documentation](http://momentjs.com/docs/#/displaying/format/). The
-default value for the time format is `H:mm`.
+## Current status
 
-##### Locale
-It specifies the locale the clock will use when displaying the time. Its default
-value is `en`. Please check the
-[`moment.js` locale folder](https://github.com/moment/moment/tree/master/locale)
-for a complete list of all supported locales.
+This project is stable and production-ready.
 
-##### Clock interval
-It specifies how many seconds should run between two time updates, and it is
-defaulted to 60 (one update per minute).
+**About demo instance**: This is a test service. Kittens will die if you abuse it. Numverify scan is pointless because my server's IP got blocked due to spam.
 
-##### Tooltip
-If enabled, a tooltip will be shown when you hover over the time in the status
-bar to display the time in an alternate format. By default the tooltip is
-disabled, and the format is `LLLL`.
+Since [v2 was released on March 2020](https://github.com/sundowndev/phoneinfoga/releases/tag/v2.0-beta), this project has been rewritten in Go language (previously Python). Why ? To improve code base, maintainability, have a stronger test suite and be able to compile code base. PhoneInfoga v2 brings new features such as serving a REST API and a web client. Usage of scanners was improved in order to drop usage of Selenium/Geckodriver which has cause many users to have troubleshoots using the tool. You can still use the legacy version in [tag v1.11](https://github.com/sundowndev/phoneinfoga/tree/v1.11) and the legacy Docker image (`sundowndev/phoneinfoga:legacy`). **Version 2 does not scan Google results anymore**, [read more](https://sundowndev.github.io/phoneinfoga/usage/#available-scanners).
 
-##### UTC
-If enabled, both the status bar clock and the tooltip clock (if enabled) will
-display UTC time instead of local time.
+## Features
 
-##### Show icon
-If ticked, a clock icon will be shown to the left of the time. It is unticked by
-default.
+- Check if phone number exists and has connectivity status with [HLR lookups](https://www.hlr-lookups.com/en/what-is-an-hlr-lookup)
+- Gather standard informations such as country, line type and carrier
+- OSINT footprinting using external APIs, Google Hacking, phone books & search engines
+- Check for reputation reports, social media, disposable numbers and more
+- Use the graphical user interface to run scans from the browser
+- Programmatic usage with the REST API and [Go modules](https://pkg.go.dev/github.com/sundowndev/phoneinfoga/v2)
 
-##### Full-screen only
-If ticked, the clock will only be visible when in full-screen.
+## Anti-features
 
-##### Right-click to clipboard
-If ticked, you can right-click on the time in the status bar to copy the current
-time to your clipboard. When copying the time, the tooltip format is used.
+- Does not claim to provide relevant or verified data, it's just a tool !
+- Does not allow to "track" a phone or its owner in real time
+- Does not allow to get the precise phone location
+- Does not allow to hack a phone
 
-### Some examples
+## License
 
-|format|description|display|
-|:----:|:---------:|:-----:|
-|`H:mm`|default date format|![default](https://user-images.githubusercontent.com/472900/32742495-87ac0a00-c8a1-11e7-82f6-49d551bb18fe.png)|
-|`h:mm a`|am/pm format|![ampm](https://user-images.githubusercontent.com/472900/32742528-9d351d58-c8a1-11e7-8495-f98d0077e0f8.png)|
-|`DD/MM/YYYY, H:mm`|short date format|![short](https://user-images.githubusercontent.com/472900/32742553-afebf58e-c8a1-11e7-8b13-6538e03b41a8.png)|
-|`MMMM Do, dddd, h:mm:ss a`|long date format|![long](https://user-images.githubusercontent.com/472900/32742572-bfa9efe4-c8a1-11e7-8e5f-e1b4b6d20282.png)|
-|`[Quarter] Q, MMMM Do YYYY, ddd, h:mm a`|space waster format|![useless](https://user-images.githubusercontent.com/472900/32742583-cca6f9c6-c8a1-11e7-90b7-4c6ba9ea6480.png)|
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fsundowndev%2FPhoneInfoga.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fsundowndev%2FPhoneInfoga?ref=badge_shield)
 
-### Locales
-When a different locale is specified in the settings, the date language will
-change accordingly. A locale can be defined with its substring, and `moment.js`
-will take care of selecting the first locale it knows. A substring can be
-specified in many ways. As example, the Chinese locale for China can be
-expressed as `zh-cn`, `zh_cn`, `zh-CN` or `zh_CN`.
+This tool is licensed under the GNU General Public License v3.0.
 
-Here are some examples for locales different from English.
+[Icon](https://www.flaticon.com/free-icon/fingerprint-search-symbol-of-secret-service-investigation_48838) made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>.
 
-| locale | code | display |
-|:--------:|:------:|:---------:|
-|Arabic|`ar`|![locale_arabic](https://user-images.githubusercontent.com/472900/32742612-e2e2530c-c8a1-11e7-9595-caa0a2c30a60.png)|
-|Belarusian|`be`|![locale_belarusian](https://user-images.githubusercontent.com/472900/32742635-f00898a2-c8a1-11e7-92e8-0ab837c743f1.png)|
-|Tibetan|`bo`|![locale_tibetan](https://user-images.githubusercontent.com/472900/32742652-fc8bb8d4-c8a1-11e7-912a-54d001f5f705.png)|
-|Russian|`ru`|![locale_russian](https://user-images.githubusercontent.com/472900/32742660-07fb6df4-c8a2-11e7-90f8-d6840ccd1e54.png)|
-|Chinese|`zh_CN`|![locale_chinese_china](https://user-images.githubusercontent.com/472900/32742676-128a37fa-c8a2-11e7-9479-1e2d8b786111.png)|
+## Support
 
-### Tooltip
-When enabled, the tooltip will contain an extended (and configurable) version of
-the current time/date.
+[![](docs/jetbrains.svg)](https://www.jetbrains.com/?from=sundowndev)
 
-![tooltip](https://user-images.githubusercontent.com/472900/32742695-2044dbe8-c8a2-11e7-8dc1-1b5a02133211.png)
-
-### Customization
-The CSS classes of the clock elements allow you to customize the appearance of
-the clock using your `styles.less` file.
-
-#### `.atom-clock`, `.atom-clock-icon` and `.atom-clock-time`
-These classes allow you to change the appearance of the whole content of the
-clock (`.atom-clock`), of the icon only (`.atom-clock-icon`), or of the time
-only (`.atom-clock-time`). A simple entry in the `styles.less` file looks like
-this:
-
-```scss
-.atom-clock {
-  color: red;
-}
-```
-
-![Atom clock customization](https://user-images.githubusercontent.com/472900/32742726-36e56e9e-c8a2-11e7-977e-f7fe45cb3b88.gif)
-
-Editing the icon and the time separately:
-
-```scss
-.atom-clock-icon {
-  color: red;
-}
-
-.atom-clock-time {
-  color: green;
-}
-```
-
-![Icon and time customization](https://user-images.githubusercontent.com/472900/32742784-4c76377a-c8a2-11e7-8ba0-a53ff1fd4fd4.gif)
-
-#### `.atom-clock-tooltip`
-This class can be used to change the appearance of the tooltip content, in
-conjunction with `.tooltip-inner`.
-
-```scss
-.atom-clock-tooltip .tooltip-inner {
-  color: orange;
-}
-```
-
-![Tooltip customization](https://user-images.githubusercontent.com/472900/32742810-61a27276-c8a2-11e7-99ed-d202f657c538.gif)
-
-#### `.atom-clock-utc`
-Selective customization can be applied when the UTC time is enabled. This can
-affect both the status bar content and the tooltip content.
-
-```scss
-.atom-clock.atom-clock-utc {
-  color: red;
-
-  &:after {
-    content: " (UTC)";
-  }
-}
-```
-
-![UTC Clock](https://user-images.githubusercontent.com/472900/32742843-7daea0f2-c8a2-11e7-86a1-614b0d3e147e.gif)
-
-```scss
-.atom-clock-tooltip.atom-clock-utc .tooltip-inner {
-  color: red;
-
-  &:before {
-    content: "(UTC) ";
-  }
-}
-```
-
-![UTC Tooltip](https://user-images.githubusercontent.com/472900/32742862-90b47000-c8a2-11e7-8be4-a4464e00d1e1.gif)
-
-### Contributing
-**Like what you see?** Please, feel free to fork this repository, and make any
-change you like. If you want to propose a nice feature, please create a separate
-branch on your fork, named after the feature you want to implement, then make a
-pull request from that branch. Also, before actually getting to work, just
-consider I'm trying to keep this package as simple and minimal as possible!
-
-### Hall of fame
-A special **THANK YOU** to all the contributors of the project!
-
-[frasertmay](https://github.com/frasertmay) (best contributor ever)
-
-[mark-hahn](https://github.com/mark-hahn)
-
-[GeNiuS69](https://github.com/GeNiuS69)
-
-### Save the clock tower!
-[![Beerpay](https://beerpay.io/b3by/atom-clock/badge.svg?style=flat-square)](https://beerpay.io/b3by/atom-clock)
-[![Beerpay](https://beerpay.io/b3by/atom-clock/make-wish.svg?style=flat-square)](https://beerpay.io/b3by/atom-clock?focus=wish)
-[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=b3by&url=https://github.com/b3by/atom-clock&title=atom-clock&language=&tags=github&category=software)
-
-![Save the clock](https://user-images.githubusercontent.com/472900/32742888-a4bcfdb0-c8a2-11e7-8198-f993b5c778bc.jpg)
+Thanks to [JetBrains](https://www.jetbrains.com/?from=sundowndev) for supporting my open-source projects.
